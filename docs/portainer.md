@@ -1,3 +1,5 @@
+# Portainer web user interface for your Docker Swarm cluster
+
 <a href="https://github.com/portainer/portainer" target="_blank">Portainer</a> is a web UI (user interface) that allows you to see the state of your Docker services in a Docker Swarm mode cluster and manage it.
 
 Follow this guide to integrate it in your Docker Swarm mode cluster deployed as described in <a href="https://dockerswarm.rocks" target="_blank">DockerSwarm.rocks</a> with a global Traefik HTTPS proxy.
@@ -52,11 +54,10 @@ nano portainer.yml
 
 !!! info
     This is just a standard Docker Compose file.
-    
+
     It's common to name the file `docker-compose.yml` or something like `docker-compose.portainer.yml`.
 
     Here it's named just `portainer.yml` for brevity.
-
 
 ## Deploy it
 
@@ -67,7 +68,6 @@ docker stack deploy -c portainer.yml portainer
 ```
 
 It will use the environment variables you created above.
-
 
 ## Check it
 
@@ -91,8 +91,7 @@ j3ahasdfe0mr   portainer_portainer.1      portainer/portainer:latest   cat.examp
 docker service logs portainer_portainer
 ```
 
-
-## Check the user interfaces
+## Check the user interface
 
 After some seconds/minutes, Traefik will acquire the HTTPS certificates for the web user interface.
 
@@ -100,14 +99,13 @@ You will be able to securely access the web UI at `https://<your portainer domai
 
 ### Timing Note
 
-    Make sure you login and create your credentials soon after Portainer is ready, or it will automatically shut down itself for security.
+Make sure you login and create your credentials soon after Portainer is ready, or it will automatically shut down itself for security.
 
-    If you didn't create the credentials on time and it shut down itself automatically, you can force it to restart with:
+If you didn't create the credentials on time and it shut down itself automatically, you can force it to restart with:
 
-    ```bash
-    docker service update portainer_portainer --force
-    ```
-
+```bash
+docker service update portainer_portainer --force
+```
 
 ## References
 
